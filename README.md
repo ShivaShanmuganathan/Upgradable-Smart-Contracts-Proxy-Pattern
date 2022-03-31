@@ -3,6 +3,14 @@
 ## EIP-1822: Universal Upgradeable Proxy Standard
 This EIP describes a standard for proxy contracts which is universally compatible with all contracts, and does not create incompatibility between the proxy and business-logic contracts. This is achieved by utilizing a unique storage position in the proxy contract to store the Logic Contract’s address. A compatibility check ensures successful upgrades. Upgrading can be performed unlimited times, or as determined by custom logic. In addition, a method for selecting from multiple constructors is provided, which does not inhibit the ability to verify bytecode.
 
+## EIP-1967 Standard Proxy Storage Slots
+This EIP standardizes how proxies store the logic contract address. Storage slot `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`(obtained as `bytes32(uint256(keccak256('eip1967.proxy.implementation')) - 1))` is reserved for the logic contract.
+
+`The Beacon Contract`
+The idea behind the beacon contract is re-usability. If you have several proxies pointing to the same logic contract address then, every time you want to update the logic contract, you'd have to update all proxies. As this can become gas intensive, it would make more sense to have a beacon contract that returns the address of the logic contract for all proxies.
+
+So, if you use beacons, you are having another layer of Smart Contract in between that returns the address of the actual logic contract.
+
 
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.

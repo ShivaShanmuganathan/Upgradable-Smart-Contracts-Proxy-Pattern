@@ -1,4 +1,9 @@
-# Advanced Sample Hardhat Project
+# Upgradable Smart Contract & Proxy Patterns
+
+## EIP-1822: Universal Upgradeable Proxy Standard
+This EIP describes a standard for proxy contracts which is universally compatible with all contracts, and does not create incompatibility between the proxy and business-logic contracts. This is achieved by utilizing a unique storage position in the proxy contract to store the Logic Contract’s address. A compatibility check ensures successful upgrades. Upgrading can be performed unlimited times, or as determined by custom logic. In addition, a method for selecting from multiple constructors is provided, which does not inhibit the ability to verify bytecode.
+
+
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
 

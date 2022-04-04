@@ -13,7 +13,7 @@ library LibA {
     // Specifies a random position from a hash of a string
     bytes32 storagePosition = keccak256("diamond.storage.LibA")
     // Set the position of our struct in contract storage
-    assembly {ds.slot := storagePosition}
+    assembly; {ds.slot := storagePosition}
   }
 }
 

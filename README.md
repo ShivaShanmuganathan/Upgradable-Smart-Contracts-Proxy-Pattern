@@ -12,6 +12,13 @@ The idea behind the beacon contract is re-usability. If you have several proxies
 So, if you use beacons, you are having another layer of Smart Contract in between that returns the address of the actual logic contract.
 
 
+## EIP-2535 💎 Diamond Standard 
+
+Diamonds are a proxy pattern for Solidity development that allows a single gateway contract to proxy calls and storage to any number of other contracts. This provides a single interface for anyone to use your contracts, while allowing your feature set to grow into many contracts. The Diamond Standard also allows for replacing or extending functionality after your contracts are deployed. 
+
+
+
+
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
 

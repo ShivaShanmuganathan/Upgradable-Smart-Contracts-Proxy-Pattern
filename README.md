@@ -16,8 +16,53 @@ So, if you use beacons, you are having another layer of Smart Contract in betwee
 
 Diamonds are a proxy pattern for Solidity development that allows a single gateway contract to proxy calls and storage to any number of other contracts. This provides a single interface for anyone to use your contracts, while allowing your feature set to grow into many contracts. The Diamond Standard also allows for replacing or extending functionality after your contracts are deployed. 
 
+### 💎 Diamond Storage
+- Diamond storage is a contract storage strategy that is used in proxy contract patterns and diamonds.
+- Diamond Standard owns and provides all storage to the facets [smart contracts that are being proxied]
+- Diamond storage relies on Solidity structs that contain sets of state variables that are easy to read and write.
+- A struct can be defined with state variables and then used in a particular position in contract storage.
+- The position can be determined by a hash of a unique string. 
 
+Simple example of diamond storage
+```shell
+library MyStructStorage {
+  bytes32 constant MYSTRUCT_POSITION = 
+    keccak256("com.mycompany.projectx.mystruct");
 
+  struct MyStruct {
+    uint var1;
+    bytes memory var2;
+    mapping (address => uint) var3
+  }
+
+  function myStructStorage()
+    internal 
+    pure 
+    returns (MyStruct storage mystruct) 
+  {
+    bytes32 position = MYSTRUCT_POSITION;
+    assembly {
+      mystruct.slot := position
+    }
+  }
+}
+```
+
+The diamond storage defined above can be used like this:
+
+```shell
+function myFunction()
+  external
+{
+  MyStructStorage.MyStruct storage mystruct =
+    MyStructStorage.myStructStorage();
+
+  mystruct.var1 = 10;
+  uint var3 = mystruct.var3[address(this)];
+
+  // etc
+}
+```
 
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.

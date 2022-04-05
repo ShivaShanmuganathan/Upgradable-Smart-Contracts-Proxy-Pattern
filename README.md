@@ -64,6 +64,20 @@ function myFunction()
 }
 ```
 
+### Modularity by Decoupling Facets from Each Other
+In the past it was common for a facet to contain within its source code every single state variable that was ever used by the diamond, in the order they were first declared. Or at least these facets contained state variables in their source code that they didn't use. This was done to avoid the problem of a new facet clobbering existing state variables.
+
+This problem is now solved with Diamond Storage. With Diamond Storage the source code of a facet can just contain the state variables that it actually needs and there is no concern about overwriting existing state variables.
+
+This means that facets that use Diamond Storage are independent from each other and it means that these facets can be reused by different diamonds. In this way facets become reusable libraries for diamonds.
+
+### 💎 DiamondCut, the Swiss-Army Knife for Contract Upgrades
+The diamondCut function enables you to add, replace and remove any number of functions from a diamond in a single transaction. For example in one function call to diamondCut you can add 3 new functions, replace 6 functions and remove 4 functions. Or you could call diamondCut one time to add one function. This is really flexible.
+
+In addition the diamondCut function emits an event that shows all changes made to a diamond. It records all additions, replacements and removals of functions.
+
+
+
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
 

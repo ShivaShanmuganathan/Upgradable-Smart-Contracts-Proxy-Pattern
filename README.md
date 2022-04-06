@@ -14,6 +14,9 @@ So, if you use beacons, you are having another layer of Smart Contract in betwee
 
 ## EIP-2535 💎 Diamond Standard 
 
+A standard for organizing and upgrading a modular smart contract system.
+Multi-Facet Proxies for full control over your upgrades.
+
 Diamonds are a proxy pattern for Solidity development that allows a single gateway contract to proxy calls and storage to any number of other contracts. This provides a single interface for anyone to use your contracts, while allowing your feature set to grow into many contracts. The Diamond Standard also allows for replacing or extending functionality after your contracts are deployed. 
 
 ### 💎 Diamond Storage
